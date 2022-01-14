@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Arial;}
+
+.tab {
+overflow: hidden;
+border: 1px solid #ccc;
+background-color: #f1f1f1
+}
+
+.tab button {
+background-color: inherit;
+float: left;
+border: none;
+outline: none;
+cursor: pointer;
+padding:  14px 16px;
+transition:0.3s;
+font-size: 17px;
+}
+
+.tab button:hover {
+ background-color: #ddd;
+}
+
+
+.tab button.active{
+background-color: #ccc;
+}
+
+
+.tabcontent {
+display: none;
+padding: 6px 12px;
+border: 1px solid #ccc;
+border-top: none;
+}
+</style>
+</head>
+<body>
+<h2>voting page</h2>
+<p>click on the buttons inside the tabbed menu:</p>
+
+<div class="tab">
+<button class="tablinks" onclick="opencity(event, 'home')">HOME</button>
+<button class="tablinks" onclick="opencity(event,'manager administration')">manager administration</button>
+<button class="tablinks" onclick="opencity(event,'manager process')">manager process</button>
+<button class="tablinks" onclick="opencity(event,'manager candidate')">manager candidate</button>
+<button class="tablinks" onclick="opencity(event,'poll result')">poll result</button>
+<button class="tablinks" onclick="opencity(event,'logout')">logout</button>
+</div>
+
+<div id="HOME" class ="tabcontent">
+<h3>home</h3>
+<p>home button</p>
+</div>
+<div id="manager administration" class="tabcontent">
+<h3>UPDATE ACCOUNT</h3>
+<p>
+<tr>first name:</tr>
+<input type="text" firstname="name"  value=" ">
+</p>
+<p>
+<tr>last name</tr>
+<input type="text"  lastname="name" value=" ">
+</p>
+<tr>e-mail address</tr>
+<p>
+<input type="text" e-mailaddress="mail" value=" ">
+</p>
+<tr>new password</tr>
+<p>
+<input type="text" password="pass" value=" ">
+</p>
+<tr>confirm password</tr>
+<p>
+<input type="text" confirmpassword="pass" value=" ">
+</p>
+<button type="button" onclick="alert('details updated')">update</button>
+</div>
+<div id="manager process" class="tabcontent">
+<h3>manager process</h3>
+<p>hello welcome to manager process</p>
+</div>
+
+<div id="manager candidate"
+class ="tabcontent">
+<h3>manager candidate</h3>
+<p>manager candidate is best</p>
+</div>
+
+<script>
+function opencity(evt,vote)
+{
+var i, tabcontent, tablinks;
+tabcontent = document.getElementsByClassName("tabcontent");
+for(i=0;i<tabcontent.length;i++){
+tabcontent[i].style.display="none";
+}
+tablinks=document.getElementsByClassName("tablinks");
+for(i=0;i<tablinks.length;i++){
+tablinks[i].className=tablinks[i].ClassName.replace(" active","");
+}
+document.getElementById(vote).style.display= "block";
+evt.currentTarget.className += s"active";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?php
+session_start();
+$mail=$_SESSION['email'];
+require('connection.php');
+$oldpass=$_POST['password'];
+$newpass=$_POST['pass'];
+$ps1=$_POST['pass1'];
+if($newpass!=$ps1){
+	header("location:changepassword.php?password=re");
+}else{
+$sel=mysqli_query($con,"UPDATE tbadministrators SET password='$newpass' WHERE password='$oldpass' and email='$_SESSION[email]' ");
+if($sel>0)
+{
+header("location:changepassword.php?password=suc");
+}
+else{
+header("location:changepassword.php?password=failed");
+}
+}
+?>

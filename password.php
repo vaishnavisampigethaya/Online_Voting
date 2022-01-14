@@ -1,0 +1,23 @@
+<?php
+session_start();
+require('connection.php');
+include('checklogin.php');
+$email=$_POST['email'];
+$oldpass=$_POST['password'];
+$eold=md5($oldpass);
+$newpass=$_POST['pass'];
+$pass=md5($newpass);
+$ps1=$_POST['pass1'];
+if($newpass!=$ps1){
+	header("location:change_password.php?password=re");
+}else{
+$sel=mysqli_query($con,"UPDATE tbvoters SET password='$pass' WHERE password='$eold' and email='$_SESSION[email]' ");
+if($sel==1)
+{
+header("location:change_password.php?password=success");
+}
+else{
+header("location:change_password.php?password=failed");
+}
+}
+?>
